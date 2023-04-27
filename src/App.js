@@ -7,6 +7,7 @@ import Authentication from './components/authentication';
 import {HashRouter, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './stores/store';
+import Search from './components/search';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/movielist" render={()=><MovieList />}/>
             <Route exact path="/movie/:movieId" render={()=><Movie />}/>
             <Route path="/signin" render={()=><Authentication />}/>
+            <Route path="/search" render={()=><Search />}/>
           </div>
         </HashRouter>
       </Provider>
