@@ -176,11 +176,11 @@ export function submitReview(data) {
         }).then((res) => {
             console.log("response", res);
             dispatch(reviewSet(res));
-            localStorage.setItem('movieId', data.movieId);
+            localStorage.setItem('movieId', data.title);
             localStorage.setItem('name', data.name);
             localStorage.setItem('review', data.quote);
             localStorage.setItem('rating', data.rating);
-            dispatch(fetchMovie(data.movieId));
+            dispatch(fetchMovie(data.title));
         }).catch((e) => console.log(e));
     }
 }
