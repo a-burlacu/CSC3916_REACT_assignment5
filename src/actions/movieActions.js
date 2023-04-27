@@ -71,8 +71,7 @@
 //     }
 // }
 import actionTypes from '../constants/actionTypes';
-//import runtimeEnv from '@mars/heroku-js-runtime-env'
-const env = process.env;
+import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 
 function moviesFetched(movies) {
@@ -111,7 +110,7 @@ export function setMovie(movie) {
 
 
 export function fetchMovie(movieID) {
-
+    const env = runtimeEnv();
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/movies/${movieID}?reviews=true`, {
             method: 'GET',
@@ -134,7 +133,7 @@ export function fetchMovie(movieID) {
 }
 
 export function fetchMovies() {
-
+    const env = runtimeEnv();
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/movies?reviews=true`, {
             method: 'GET',
@@ -156,7 +155,7 @@ export function fetchMovies() {
 }
 
 export function submitReview(data) {
-
+    const env = runtimeEnv();
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/review`, {
             method: 'POST',
@@ -176,11 +175,11 @@ export function submitReview(data) {
         }).then((res) => {
             console.log("response", res);
             dispatch(reviewSet(res));
-            localStorage.setItem('movieId', data.title);
+            localStorage.setItem('movieID', data.movieID);
             localStorage.setItem('name', data.name);
             localStorage.setItem('review', data.quote);
             localStorage.setItem('rating', data.rating);
-            dispatch(fetchMovie(data.title));
+            dispatch(fetchMovie(data.movieID));
         }).catch((e) => console.log(e));
     }
 }
