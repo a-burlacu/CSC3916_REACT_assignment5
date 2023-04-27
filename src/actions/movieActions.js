@@ -29,19 +29,9 @@ export function setMovie(movie) {
     }
 }
 
-export function submitReview(reviewText, movieId, username){
-    return {
-        type: actionTypes.SUBMIT_REVIEW,
-        reviewText: reviewText,
-        movieId: movieId,
-        username: username
-    }
-        
-}
-
-export function fetchMovie(movieId) {
+export function fetchMovie(title) {
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/movies/${movieId}?reviews=true`, {
+        return fetch(`${env.REACT_APP_API_URL}/movies/${title}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

@@ -43,7 +43,7 @@ class Register extends Component {
 
                 <Form.Group controlId="username">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control onChange={this.updateDetails} value={this.state.details.username} type="email" placeholder="Enter email" />
+                    <Form.Control onChange={this.updateDetails} value={this.state.details.username} type="email" placeholder="Username" />
                 </Form.Group>
 
                 <Form.Group controlId="password">
