@@ -7,10 +7,9 @@ import MovieDetail from "../components/moviedetail"
 // support routing
 
 function Movie(props) {
-    Movie = new Movie();
     const [selectedMovie] = useState(props.selectedMovie);
     const params = useParams();
-    const title = params.selectedMovie.title;
+    const title = params.title;
     console.log(title);
     const dispatch = useDispatch();
     if (selectedMovie == null) {
