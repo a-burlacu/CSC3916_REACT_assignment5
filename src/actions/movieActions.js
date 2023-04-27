@@ -72,7 +72,7 @@
 // }
 import actionTypes from '../constants/actionTypes';
 import runtimeEnv from '@mars/heroku-js-runtime-env'
-
+const env = process.env;
 
 function moviesFetched(movies) {
     return {
@@ -110,7 +110,7 @@ export function setMovie(movie) {
 
 
 export function fetchMovie(movieID) {
-    const env = runtimeEnv();
+
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/movies/${movieID}?reviews=true`, {
             method: 'GET',
@@ -133,7 +133,7 @@ export function fetchMovie(movieID) {
 }
 
 export function fetchMovies() {
-    const env = runtimeEnv();
+
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/movies?reviews=true`, {
             method: 'GET',
@@ -155,7 +155,7 @@ export function fetchMovies() {
 }
 
 export function submitReview(data) {
-    const env = runtimeEnv();
+
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/review`, {
             method: 'POST',
