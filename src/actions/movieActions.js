@@ -110,10 +110,10 @@ export function setMovie(movie) {
 }
 
 
-export function fetchMovie(title) {
+export function fetchMovie(movieID) {
 
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/movies/${title}?reviews=true`, {
+        return fetch(`${env.REACT_APP_API_URL}/movies/${movieID}?reviews=true`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
