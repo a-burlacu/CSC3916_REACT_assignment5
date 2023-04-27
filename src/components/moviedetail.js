@@ -78,7 +78,7 @@ class MovieDetail extends Component {
         this.updateRating = this.updateRating.bind(this);
         this.state = {
             details:{
-                movieID: this.props.selectedMovie.title,
+                movieID: this.selectedMovie.title,
                 name: localStorage.getItem('username'),
                 quote: '',
                 rating: ''
@@ -97,7 +97,7 @@ class MovieDetail extends Component {
 
     componentDidMount() {
         const {dispatch} = this.props;
-        if (this.props.selectedMovie == null) {
+        if (this.selectedMovie == null) {
             dispatch(fetchMovie(this.props.title));
         }
     }
@@ -118,7 +118,7 @@ class MovieDetail extends Component {
 
     render() {
 
-        if (!this.props.selectedMovie) {
+        if (!this.selectedMovie) {
             return <div>Loading....</div>
         }
 
@@ -126,22 +126,22 @@ class MovieDetail extends Component {
             <Card>
                 <Card.Header>Movie Detail</Card.Header>
                 <Card.Body>
-                    <Image className="image" src={this.props.selectedMovie.imageURL} thumbnail />
+                    <Image className="image" src={this.selectedMovie.imageURL} thumbnail />
                 </Card.Body>
                 <ListGroup>
-                    <ListGroupItem>{this.props.selectedMovie.title}</ListGroupItem>
+                    <ListGroupItem>{this.selectedMovie.title}</ListGroupItem>
                     <ListGroupItem>
-                        {this.props.selectedMovie.actors?.map((actor, i) => {
+                        {this.props.selectedMovie?.actors?.map((actor, i) => {
                             console.log(actor);
                             return (<p key={i}>
                                 <b>{actor.actorName}</b> {actor.charName}
                             </p>);
                         })}
                     </ListGroupItem>
-                    <ListGroupItem><h4><BsStarFill/> {this.props.selectedMovie.avgRating}</h4></ListGroupItem>
+                    <ListGroupItem><h4><BsStarFill/> {this.selectedMovie.avgRating}</h4></ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    {this.props.selectedMovie.movieReviews?.map((review, i) =>
+                    {this.selectedMovie?.movieReviews?.map((review, i) =>
                         <p key={i}>
                             <b>{review.name}</b>&nbsp; {review.quote}
                             &nbsp;  <BsStarFill /> {review.rating}
